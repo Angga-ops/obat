@@ -16,7 +16,7 @@ $level=$_SESSION['level'];
 <div id="navbar" class="panel panel-success collapse navbar-collapse" style="padding:0px;">
   <div class="panel-heading collapse navbar-collapse">
     <center>
-      <a href="users"><img src="img/logo.png" class="img-responsive" width="150" alt=""></a>
+      <a href="users"><img src="img/apotek.png" class="img-responsive" width="150" alt=""></a>
     </center>
     <br>
   </div>

@@ -8,7 +8,7 @@
     <div class="panel-body">
       <div style="font-size:100px;">
         4
-        <img src="img/logo.png" width="100" alt="">
+        <img src="img/apotek.png" width="100" alt="">
         4
       </div>
       <h3><b>PAGE NOT FOUND</b></h3>

@@ -3,7 +3,7 @@
 
     <div class="col-md-4"></div>
     <div class="col-md-4"> <br>
-      <center><img src="img/logo.png" width="100" alt=""></center>
+      <center><img src="img/apotek.png" width="100" alt=""></center>
       <hr>
       <form class="form-horizontal" action="" method="post" data-parsley-validate="true">
         <div class="form-group">

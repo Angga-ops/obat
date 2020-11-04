@@ -23,7 +23,7 @@ if (mysqli_num_rows($cek_data)==0) {
     <meta name="author" content="Daniel Septyadi">
     <title><?php echo view(); ?></title>
     <base href="<?php echo base_url(); ?>">
-    <link rel="icon" href="img/favicon.ico">
+    <link rel="icon" href="img/apotek.png">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="assets/css/jquery-ui.css" rel="stylesheet">
@@ -53,7 +53,7 @@ if (mysqli_num_rows($cek_data)==0) {
           </button>
           <!-- <a class="navbar-brand" href=""> -->
           <a class="navbar-x" href="">
-            <img src="img/logo2.png" width="30" alt="">
+            <img src="img/apotek.png" width="30" alt="">
             <?php echo view('navbar'); ?>
           </a>
         </div>

@@ -16,7 +16,7 @@ if ($_SESSION['id_user']!='' AND $_SESSION['username']!='' AND $_SESSION['level'
     <meta name="author" content="Daniel Septyadi">
     <title><?= view(); ?></title>
     <base href="<?php echo base_url(); ?>">
-    <link rel="icon" href="img/favicon.ico">
+    <link rel="icon" href="img/apotek.png">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/parsley.min.css" rel="stylesheet">
