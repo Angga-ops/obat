@@ -38,7 +38,7 @@ if ($_SESSION['id_user']!='' AND $_SESSION['username']!='' AND $_SESSION['level'
     height: 100%;
     z-index: 0;
     opacity: 0.5;
-    background: url("img/bgpage.jpg") no-repeat center center;
+    background: url("img/foto_obat.jpg") no-repeat center center;
     background-size: cover;
   }
   </style>

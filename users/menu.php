@@ -10,8 +10,8 @@ $level=$_SESSION['level'];
 ?>
 <style>
   .panel-collapse > ul > li{padding-left:20px;}
-  .menu_active{background:#337ab7;color:#fff;}
-  .submenu_active{background:#f1f1f1;color:#2196f3;}
+  .menu_active{background:#FFD700;color:#FFD700;}
+  .submenu_active{background:#FFD700;color:#FFD700;}
 </style>
 <div id="navbar" class="panel panel-success collapse navbar-collapse" style="padding:0px;">
   <div class="panel-heading collapse navbar-collapse" style="background: white;">

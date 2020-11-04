@@ -15,7 +15,7 @@
 <?php if ($level=='admin' || $level=='dokter'){ ?>
   <div class="col-md-4">
     <a href="users?menu=diagnosa_penyakit">
-      <div class="box bg-cyan">
+      <div class="box bg-white">
         <div class="bg-icon"><i class="fa fa-clipboard"></i></div>
         <label>Diagnosa Penyakit</label>
       </div>
