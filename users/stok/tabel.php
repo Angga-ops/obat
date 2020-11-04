@@ -1,3 +1,4 @@
+
 <?php
 if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['level']!='gudang'){ echo "<script>window.location='users?menu=404';</script>";}
 
@@ -40,3 +41,4 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
     } ?>
   </tbody>
 </table>
+

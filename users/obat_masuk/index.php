@@ -6,16 +6,16 @@
     <?php
     if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['level']!='gudang'){ echo "<script>window.location='users?menu=404';</script>";}
 
-    if ($_GET['aksi']=='tambah'){
-      include "tambah.php";
-    }elseif ($_GET['aksi']=='edit'){
-      include "edit.php";
-    }elseif ($_GET['aksi']=='hapus'){
-      include "hapus.php";
-    }elseif ($_GET['aksi']=='detail'){
-      include "detail.php";
-    }else{
-      include "tabel.php";
+      if ($_GET['aksi']=='tambah'){
+        include "tambah.php";
+      }elseif ($_GET['aksi']=='edit'){
+        include "edit.php";
+      }elseif ($_GET['aksi']=='hapus'){
+        include "hapus.php";
+      }elseif ($_GET['aksi']=='detail'){
+        include "detail.php";
+      }else{
+        include "tabel.php";
     } ?>
   </div>
 </div>

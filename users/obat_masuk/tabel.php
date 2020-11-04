@@ -35,7 +35,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk ORDER BY id_masuk D
         <td class="text-center">
           <a href="users?menu=obat_masuk&aksi=edit&id=<?php echo $baris['id_masuk']; ?>" class="btn btn-success" title="Edit"><i class="fa fa-pencil"></i></a>
           <a href="users?menu=obat_masuk&aksi=hapus&id=<?php echo $baris['id_masuk']; ?>" class="btn btn-danger" title="Hapus" onclick="return confirm('Anda Yakin?');"><i class="fa fa-trash"></i></a>
-        </td>
+        </td>       
       </tr>
     <?php
     } ?>

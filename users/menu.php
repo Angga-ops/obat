@@ -14,7 +14,7 @@ $level=$_SESSION['level'];
   .submenu_active{background:#f1f1f1;color:#2196f3;}
 </style>
 <div id="navbar" class="panel panel-success collapse navbar-collapse" style="padding:0px;">
-  <div class="panel-heading collapse navbar-collapse">
+  <div class="panel-heading collapse navbar-collapse" style="background: white;">
     <center>
       <a href="users"><img src="img/apotek.png" class="img-responsive" width="150" alt=""></a>
     </center>
@@ -38,7 +38,18 @@ $level=$_SESSION['level'];
         <a href="users?menu=resep_obat"><i class="fa fa-tags"></i> Resep Obat</a>
       </li>
     <?php endif; ?>
-    <?php if ($level=='admin' || $level=='apotik' || $level=='gudang'): ?>
+    <?php if ($level=='gudang'): ?>
+      <li<?php if($menu=='obat_masuk'){echo ' class="active"';}?>>
+        <a href="users?menu=obat_masuk"><i class="fa fa-download"></i> Obat Masuk</a>
+      </li>
+      <li<?php if($menu=='obat_keluar'){echo ' class="active"';}?>>
+        <a href="users?menu=obat_keluar"><i class="fa fa-download"></i> Obat Keluar</a>
+      </li>
+      <li<?php if($menu=='stok'){echo ' class="active"';}?>>
+        <a href="users?menu=stok"><i class="fa fa-tasks"></i> Stok Obat </a>
+      </li>
+    <?php endif; ?>
+    <?php if ($level=='admin' || $level=='apotik'): ?>
       <li<?php if($menu=='obat_masuk'){echo ' class="active"';}?>>
         <a href="users?menu=obat_masuk"><i class="fa fa-download"></i> Obat Masuk</a>
       </li>
