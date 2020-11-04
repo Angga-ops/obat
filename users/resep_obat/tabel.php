@@ -14,7 +14,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_resep
       <th width="20%">Nama Pasien</th>
       <th width="20%">Dokter</th>
       <th width="15%">Tanggal Resep</th>
-      <th width="19%">Nama Obat</th>
+      <th width="15%">Nama Obat</th>
       <th width="15%">Jenis Obat</th>
       <th width="10%">Aksi</th>
     </tr>
