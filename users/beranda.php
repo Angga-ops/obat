@@ -4,7 +4,7 @@
 <?php if ($level=='admin' || $level=='adm'){ ?>
   <div class="col-md-4">
     <a href="users?menu=data_pasien">
-      <div class="box bg-white">
+      <div class="box bg-red">
         <div class="bg-icon"><i class="fa fa-heartbeat"></i></div>
         <label>Data Pasien</label>
       </div>
@@ -24,7 +24,7 @@
 
   <div class="col-md-4">
     <a href="users?menu=resep_obat">
-      <div class="box bg-green">
+      <div class="box bg-red">
         <div class="bg-icon"><i class="fa fa-tags"></i></div>
         <label>Resep Obat</label>
       </div>
@@ -35,7 +35,7 @@
 <?php if ( $level=='gudang'){ ?>
   <div class="col-md-4">
     <a href="users?menu=obat_masuk">
-      <div class="box bg-green">
+      <div class="box bg-red">
         <div class="bg-icon"><i class="fa fa-download"></i></div>
         <label>Obat Masuk</label>
       </div>
@@ -43,7 +43,7 @@
   </div>
   <div class="col-md-4">
     <a href="users?menu=obat_keluar">
-      <div class="box bg-red">
+      <div class="box bg-white">
         <div class="bg-icon"><i class="fa fa-upload"></i></div>
         <label>Obat Keluar</label>
       </div>
@@ -51,7 +51,7 @@
   </div>
   <div class="col-md-4">
     <a href="users?menu=stok">
-      <div class="box bg-white">
+      <div class="box bg-black">
         <div class="bg-icon"><i class="fa fa-tasks"></i></div>
         <label>Stok Obat</label>
       </div>
@@ -61,7 +61,7 @@
 <?php if ($level=='admin' || $level=='apotik'){ ?>
   <div class="col-md-4">
     <a href="users?menu=obat_masuk">
-      <div class="box bg-green">
+      <div class="box bg-white">
         <div class="bg-icon"><i class="fa fa-download"></i></div>
         <label>Obat Masuk</label>
       </div>
@@ -69,7 +69,7 @@
   </div>
   <div class="col-md-4">
     <a href="users?menu=obat_keluar">
-      <div class="box bg-red">
+      <div class="box bg-black">
         <div class="bg-icon"><i class="fa fa-upload"></i></div>
         <label>Obat Keluar</label>
       </div>
@@ -85,7 +85,7 @@
   </div>
   <div class="col-md-4">
     <a href="users?menu=transaksi">
-      <div class="box bg-yellow">
+      <div class="box bg-red">
         <div class="bg-icon"><i class="fa fa-handshake-o"></i></div>
         <label>Transaksi Obat</label>
       </div>
@@ -97,7 +97,7 @@
 <?php if ($level=='admin' || $level=='kasir'){ ?>
   <div class="col-md-4">
     <a href="users?menu=pembayaran">
-      <div class="box bg-cyan">
+      <div class="box bg-white">
         <div class="bg-icon"><i class="fa fa-credit-card"></i></div>
         <label>Pembayaran</label>
       </div>
@@ -108,7 +108,7 @@
 <?php if ($level=='admin'){ ?>
   <div class="col-md-4">
     <a href="users?menu=user">
-      <div class="box bg-blue">
+      <div class="box bg-red">
         <div class="bg-icon"><i class="fa fa-users"></i></div>
         <label>User</label>
       </div>
@@ -118,7 +118,7 @@
 
   <div class="col-md-4">
     <a href="users?menu=profile">
-      <div class="box bg-purple">
+      <div class="box bg-blck">
         <div class="bg-icon"><i class="fa fa-user"></i></div>
         <label>Profile</label>
       </div>
@@ -127,7 +127,7 @@
 
   <div class="col-md-4">
     <a href="users?menu=ubah_pass">
-      <div class="box bg-yellow">
+      <div class="box bg-red">
         <div class="bg-icon"><i class="fa fa-key"></i></div>
         <label>Ubah Password</label>
       </div>
