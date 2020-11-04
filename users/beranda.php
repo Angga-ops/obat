@@ -4,8 +4,8 @@
 <?php if ($level=='admin' || $level=='adm'){ ?>
   <div class="col-md-4">
     <a href="users?menu=data_pasien">
-      <div class="box bg-blue">
-        <div class="bg-icon"><i class="fa fa-database"></i></div>
+      <div class="box bg-white">
+        <div class="bg-icon"><i class="fa fa-heartbeat"></i></div>
         <label>Data Pasien</label>
       </div>
     </a>
@@ -86,7 +86,7 @@
   <div class="col-md-4">
     <a href="users?menu=transaksi">
       <div class="box bg-yellow">
-        <div class="bg-icon"><i class="fa fa-table"></i></div>
+        <div class="bg-icon"><i class="fa fa-handshake-o"></i></div>
         <label>Transaksi Obat</label>
       </div>
     </a>

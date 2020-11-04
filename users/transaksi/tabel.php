@@ -7,7 +7,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_transaksi
   INNER JOIN tbl_stok ON tbl_stok.id_stok=tbl_transaksi.id_stok
   ORDER BY tbl_transaksi.id_transaksi DESC");
 ?>
-<a href="users?menu=transaksi&aksi=tambah" class="btn btn-primary">+ Data</a>
+<a href="users?menu=transaksi&aksi=tambah" class="btn btn-primary">Tambah Data</a>
 <hr>
 <table id="data_tables" class="table table-bordered table-striped table-hover" width="100%">
   <thead>

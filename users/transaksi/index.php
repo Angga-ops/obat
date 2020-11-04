@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-warning">
   <div class="panel-heading">
-    <b><i class="fa fa-table"></i> <?php echo ucwords($_GET['aksi']); ?> Transaksi Obat</b>
+    <b><i class="fa fa-handshake-o"></i> <?php echo ucwords($_GET['aksi']); ?> Transaksi Obat</b>
   </div>
   <div class="panel-body">
     <?php
