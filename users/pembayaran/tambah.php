@@ -20,23 +20,26 @@ $cek_data2 = mysqli_query($con, "SELECT * FROM tbl_transaksi
 <table class="table table-bordered table-striped table-hover" width="100%">
   <thead>
     <tr>
-      <th width="25%">Nama Pasien</th>
-      <th width="20%">Nama Obat</th>
+      <th width="20%">Nama Pasien</th>
+      <th width="15%">Nama Obat</th>
       <th width="15%">Jumlah Obat</th>
-      <th width="20%">Harga Jual</th>
-      <th width="20%">Harga Satuan</th>
+      <th width="15%">Harga</th>
+      <th width="19%">Total</th>
     </tr>
   </thead>
   <tbody>
     <?php
     $no=1;
-    while ($baris = mysqli_fetch_array($cek_data2)) {?>
+    while ($baris = mysqli_fetch_array($cek_data2)) {
+      $query = mysqli_query($con, "SELECT jumlah_keluar FROM tbl_obat_keluar WHERE id_stok='".$baris['id_stok']."'");
+      $jml_obat = mysqli_fetch_array($query);
+      ?>
       <tr>
-        <td><?php echo $baris['nama_pasien']; ?></td>
+      <td><?php echo $baris['nama_pasien']; ?></td>
         <td><?php echo $baris['nama_obat']; ?></td>
-        <td><?php echo number_format($baris['jumlah_obat']); ?></td>
-        <td>Rp. <?php echo number_format($baris['harga_jual']); ?></td>
+        <td><?php echo number_format($jml_obat['jumlah_keluar']); ?></td>
         <td>Rp. <?php echo number_format($baris['harga_satuan']); ?></td>
+        <td>Rp. <?php echo number_format($jml_obat['jumlah_keluar'] * $baris['harga_satuan']); ?></td>
       </tr>
     <?php
     } ?>
@@ -57,17 +60,22 @@ $cek_data2 = mysqli_query($con, "SELECT * FROM tbl_transaksi
     <?php
     $no=1; $total=0; $sub_total=0;$t_jumlah=0; $t_total=0;
     while ($baris = mysqli_fetch_array($cek_data)) {
-      $sub_total = $baris['jumlah_keluar']*$baris['jumlah_harga_jual'];?>
+      $q_transaksi = mysqli_query($con, "SELECT id_stok FROM tbl_transaksi WHERE id_transaksi='".$baris['id_transaksi']."'");
+      $transaksi = mysqli_fetch_array($q_transaksi);
+      $q_stok = mysqli_query($con, "SELECT harga_satuan FROM tbl_stok WHERE id_stok='".$transaksi['id_stok']."'");
+      $stok = mysqli_fetch_array($q_stok);
+      $sub_total = $baris['jumlah_keluar']*$stok['harga_satuan'];
+      ?>
       <tr>
         <td><?php echo $no++; ?></td>
         <td><?php echo date('d-m-Y',strtotime($baris['tanggal_keluar'])); ?></td>
         <td><?php echo number_format($baris['jumlah_keluar']); ?></td>
-        <td>Rp. <?php echo number_format($baris['jumlah_harga_jual']); ?></td>
+        <td>Rp. <?php echo number_format($stok['harga_satuan']); ?></td>
         <td>Rp. <?php echo number_format($sub_total); ?></td>
       </tr>
     <?php
     $t_jumlah +=$baris['jumlah_keluar'];
-    $t_total +=$baris['jumlah_harga_jual'];
+    $t_total +=$stok['harga_satuan'];
     $total+=$sub_total;
     } ?>
   </tbody>

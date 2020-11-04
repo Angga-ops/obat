@@ -11,11 +11,12 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_transaksi
   <thead>
     <tr>
       <th width="1%">No.</th>
+      <th width="20%">Tanggal Transaksi</th>
       <th width="20%">Nama Pasien</th>
-      <th width="20%">Nama Obat</th>
+      <th width="15%">Nama Obat</th>
       <th width="15%">Jumlah Obat</th>
-      <th width="15%">Harga Jual</th>
-      <th width="19%">Harga Satuan</th>
+      <th width="15%">Harga</th>
+      <th width="19%">Total</th>
       <th width="10%"></th>
     </tr>
   </thead>
@@ -24,14 +25,18 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_transaksi
     $no=1;
     while ($baris = mysqli_fetch_array($cek_data)) {
       $q_bayar = mysqli_query($con, "SELECT * FROM tbl_pembayaran WHERE id_transaksi='$baris[id_transaksi]'");
-      $bayar = mysqli_num_rows($q_bayar);?>
+      $bayar = mysqli_num_rows($q_bayar);
+      $query = mysqli_query($con, "SELECT jumlah_keluar FROM tbl_obat_keluar WHERE id_stok='".$baris['id_stok']."'");
+      $jml_obat = mysqli_fetch_array($query);
+      ?>
       <tr>
         <td><?php echo $no++; ?></td>
+        <td><?php echo $baris['tanggal_transaksi']; ?></td>
         <td><?php echo $baris['nama_pasien']; ?></td>
         <td><?php echo $baris['nama_obat']; ?></td>
-        <td><?php echo $baris['jumlah_obat']; ?></td>
-        <td><?php echo $baris['harga_jual']; ?></td>
+        <td><?php echo $jml_obat['jumlah_keluar']; ?></td>
         <td><?php echo $baris['harga_satuan']; ?></td>
+        <td><?php echo $jml_obat['jumlah_keluar'] * $baris['harga_satuan']; ?></td>
         <td class="text-center">
           <?php if ($bayar==0){ ?>
             <a href="users?menu=pembayaran&aksi=tambah&id=<?php echo $baris['id_transaksi']; ?>" class="btn btn-primary btn-xs" title="Bayar">Bayar</a>

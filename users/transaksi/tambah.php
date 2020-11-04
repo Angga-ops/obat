@@ -2,7 +2,7 @@
 <?php
 $cek_pasien = mysqli_query($con, "SELECT * FROM tbl_pasien");
 $cek_resep  = mysqli_query($con, "SELECT * FROM tbl_resep");
-$cek_stok   = mysqli_query($con, "SELECT * FROM tbl_stok");
+$cek_stok   = mysqli_query($con, "SELECT * FROM tbl_stok JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_stok.id_masuk");
 ?>
 <!-- <div class="col-md-2"></div> -->
 <div class="col-md-12">
@@ -18,8 +18,6 @@ $cek_stok   = mysqli_query($con, "SELECT * FROM tbl_stok");
           <?php } ?>
         </select>
       </div>
-    </div>
-    <div class="form-group">
       <div class="col-md-6">
         <label>Resep</label>
         <select class="form-control" name="id_resep" required>
@@ -29,14 +27,20 @@ $cek_stok   = mysqli_query($con, "SELECT * FROM tbl_stok");
           <?php } ?>
         </select>
       </div>
+    </div>
+    <div class="form-group">
       <div class="col-md-6">
-        <label>Stok</label>
+        <label>Obat</label>
         <select class="form-control" name="id_stok" required>
           <option value="">- PILIH -</option>
           <?php while ($baris = mysqli_fetch_array($cek_stok)) { ?>
-            <option value="<?php echo $baris['id_stok']; ?>"><?php echo $baris['dosis_obat']; ?></option>
+            <option value="<?php echo $baris['id_stok']; ?>"><?php echo $baris['nama_obat']; ?> - Dosis <?php echo $baris['dosis_obat']; ?></option>
           <?php } ?>
         </select>
+      </div>
+      <div class="col-md-6">
+        <label>Jumlah Obat</label>
+        <input type="number" name="jumlah_obat" class="form-control" value="" placeholder="Jumlah Obat" title="Jumlah Obat" required>
       </div>
     </div>
     <div class="form-group">
@@ -58,6 +62,7 @@ if (isset($_POST['btnsimpan'])):
   $id_resep  = htmlentities(strip_tags($_POST['id_resep']));
   $id_stok   = htmlentities(strip_tags($_POST['id_stok']));
   $tanggal   = date('Y-m-d');
+  $jumlah_keluar = htmlentities(strip_tags($_POST['jumlah_obat']));
 
   $cek_stok = mysqli_query($con, "SELECT * FROM tbl_stok WHERE id_stok='$id_stok' limit 1");
   if (mysqli_num_rows($cek_stok)==0) {
@@ -67,6 +72,9 @@ if (isset($_POST['btnsimpan'])):
     $data_stok = mysqli_fetch_array($cek_stok);
     $jumlah_harga_jual    = $data_stok['harga_jual'];
     $jumlah_harga_satuan  = $data_stok['harga_satuan'];
+    $stok = $data_stok['jumlah_obat'] - $jumlah_keluar;
+
+    $update_stok = mysqli_query($con, "UPDATE tbl_stok SET jumlah_obat='$stok' WHERE id_stok='$id_stok'");
   }
 
   $simpan = mysqli_query($con, "INSERT INTO tbl_transaksi
@@ -83,9 +91,9 @@ if (isset($_POST['btnsimpan'])):
       $id_transaksi = $baris['id_transaksi'];
     }
     $simpan2 = mysqli_query($con, "INSERT INTO tbl_obat_keluar
-                            (id_stok, id_transaksi, tanggal_keluar, jumlah_keluar, jumlah_harga_jual, jumlah_harga_satuan)
+                            (id_stok, id_transaksi, tanggal_keluar, jumlah_keluar)
                             VALUES
-                            ('$id_stok', '$id_transaksi', '$tanggal', '1', $jumlah_harga_jual, $jumlah_harga_satuan)
+                            ('$id_stok', '$id_transaksi', '$tanggal', '$jumlah_keluar')
                           ");
     echo "<script>alert('Data berhasil disimpan!'); window.location='users?menu=transaksi';</script>";
     exit;
