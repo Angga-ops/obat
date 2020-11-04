@@ -3,7 +3,7 @@ if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['le
 
 $cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk ORDER BY id_masuk DESC");
 ?>
-<?php if ($_SESSION['level']=='admin' && $_SESSION['level']=='apotik' ) {?>
+<?php if ($_SESSION['level']!='gudang' ) {?>
   <a href="users?menu=obat_masuk&aksi=tambah" class="btn btn-primary">+ Data</a>
 <?php } ?>
 
@@ -19,7 +19,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk ORDER BY id_masuk D
       <th width="15%">Harga Beli</th>
       <th width="4%">Jumlah Masuk</th>
       <th width="15%">Tanggal Expired</th>
-      <?php if ($_SESSION['level']=='admin' && $_SESSION['level']=='apotik' ) {?>
+      <?php if ($_SESSION['level']!='gudang' ) {?>
         <th width="10%">Aksi</th>
       <?php } ?>
     </tr>
@@ -37,7 +37,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk ORDER BY id_masuk D
         <td><?php echo $baris['harga_beli']; ?></td>
         <td><?php echo $baris['jumlah_masuk']; ?></td>
         <td><?php echo $baris['tanggal_exp']; ?></td>
-        <?php if ($_SESSION['level']=='admin' && $_SESSION['level']=='apotik' ) {?>
+        <?php if ($_SESSION['level']!='gudang') {?>
           <td class="text-center">
           <a href="users?menu=obat_masuk&aksi=edit&id=<?php echo $baris['id_masuk']; ?>" class="btn btn-success" title="Edit"><i class="fa fa-pencil"></i></a>
           <a href="users?menu=obat_masuk&aksi=hapus&id=<?php echo $baris['id_masuk']; ?>" class="btn btn-danger" title="Hapus" onclick="return confirm('Anda Yakin?');"><i class="fa fa-trash"></i></a>

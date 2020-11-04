@@ -4,7 +4,7 @@ if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['le
 $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
   INNER JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_stok.id_masuk ORDER BY tbl_stok.id_stok DESC");
 ?>
-<?php if ($_SESSION['level']=='admin' && $_SESSION['level']=='apotik' ) {?>
+<?php if ($_SESSION['level']!='gudang' ) {?>
   <a href="users?menu=stok&aksi=tambah" class="btn btn-primary">+ Data</a>
 <?php } ?>
 
@@ -19,7 +19,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
       <th width="15%">Harga Jual</th>
       <th width="19%">Harga Satuan</th>
       <th width="15%">Tanggal Expired</th>
-      <?php if ($_SESSION['level']=='admin' && $_SESSION['level']=='apotik' ) {?>
+      <?php if ($_SESSION['level']!='gudang' ) {?>
         <th width="10%">Aksi</th>
       <?php } ?>
     </tr>
@@ -36,7 +36,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
         <td><?php echo $baris['harga_jual']; ?></td>
         <td><?php echo $baris['harga_satuan']; ?></td>
         <td><?php echo $baris['tanggal_exp']; ?></td>
-        <?php if ($_SESSION['level']=='admin' && $_SESSION['level']=='apotik' ) {?>
+        <?php if ($_SESSION['level']!='gudang') {?>
           <td class="text-center">
           <a href="users?menu=stok&aksi=edit&id=<?php echo $baris['id_stok']; ?>" class="btn btn-success btn-xs" title="Edit"><i class="fa fa-pencil"></i></a>
           <a href="users?menu=stok&aksi=hapus&id=<?php echo $baris['id_stok']; ?>" class="btn btn-danger btn-xs" title="Hapus" onclick="return confirm('Anda Yakin?');"><i class="fa fa-trash"></i></a>
