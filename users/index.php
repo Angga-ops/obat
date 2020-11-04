@@ -33,13 +33,13 @@ if (mysqli_num_rows($cek_data)==0) {
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/sticky-footer-navbar.css" rel="stylesheet">
     <style>
-      .navbar-x{float:left;height: 50px;line-height: 20px;text-decoration:none;color:#f1f1f1;font-size:18px;font-weight:bold;padding: 7px 15px;}
-      .navbar-x:hover{text-decoration:none;color:#999;}
+      .navbar-x{float:left;height: 50px;line-height: 20px;text-decoration:none;color:	#FF00FF;font-size:18px;font-weight:bold;padding: 7px 15px;}
+      .navbar-x:hover{text-decoration:none;color:	#FF00FF;}
       .container-fluid {padding-top:70px;}
       nav > .container{margin-left:0px;margin-right:0px;width:100%}
     </style>
   </head>
-  <body style="background:#999;">
+  <body style="background:#5F9EA0;">
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
