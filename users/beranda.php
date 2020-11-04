@@ -118,7 +118,7 @@
 
   <div class="col-md-4">
     <a href="users?menu=profile">
-      <div class="box bg-blck">
+      <div class="box bg-black">
         <div class="bg-icon"><i class="fa fa-user"></i></div>
         <label>Profile</label>
       </div>
