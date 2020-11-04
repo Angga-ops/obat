@@ -5,7 +5,7 @@
   <div class="panel panel-success">
     <div class="panel-heading">
       <center>
-        <img src="img/logo.png" class="img-responsive" width="150" alt="">
+        <img src="img/apotek.png" class="img-responsive" width="150" alt="">
       </center>
     </div>
     <div class="panel-body">

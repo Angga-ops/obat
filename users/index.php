@@ -39,7 +39,7 @@ if (mysqli_num_rows($cek_data)==0) {
       nav > .container{margin-left:0px;margin-right:0px;width:100%}
     </style>
   </head>
-  <body style="background:#5F9EA0;">
+  <body style="background:#FF9933;">
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">

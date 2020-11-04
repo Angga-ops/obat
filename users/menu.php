@@ -27,7 +27,7 @@ $level=$_SESSION['level'];
       </li>
     <?php if ($level=='admin' || $level=='adm'): ?>
       <li<?php if($menu=='data_pasien'){echo ' class="active"';}?>>
-        <a href="users?menu=data_pasien"><i class="fa fa-database"></i> Data Pasien</a>
+        <a href="users?menu=data_pasien"><i class="fa fa-heartbeat"></i> Data Pasien</a>
       </li>
     <?php endif; ?>
     <?php if ($level=='admin' || $level=='dokter'): ?>
@@ -60,7 +60,7 @@ $level=$_SESSION['level'];
         <a href="users?menu=stok"><i class="fa fa-tasks"></i> Stok Obat </a>
       </li>
       <li<?php if($menu=='transaksi'){echo ' class="active"';}?>>
-        <a href="users?menu=transaksi"><i class="fa fa-table"></i> Transaksi Obat </a>
+        <a href="users?menu=transaksi"><i class="fa fa-handshake-o"></i> Transaksi Obat </a>
       </li>
       <!-- <li<?php if($menu=='obat_keluar'){echo ' class="active"';}?>>
         <a href="users?menu=obat_keluar"><i class="fa fa-upload"></i> Obat Keluar </a>
