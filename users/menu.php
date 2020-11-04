@@ -14,7 +14,7 @@ $level=$_SESSION['level'];
   .submenu_active{background:#f1f1f1;color:#2196f3;}
 </style>
 <div id="navbar" class="panel panel-success collapse navbar-collapse" style="padding:0px;">
-  <div class="panel-heading collapse navbar-collapse">
+  <div class="panel-heading collapse navbar-collapse" style="background: white;">
     <center>
       <a href="users"><img src="img/apotek.png" class="img-responsive" width="150" alt=""></a>
     </center>
