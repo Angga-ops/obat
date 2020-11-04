@@ -32,7 +32,33 @@
   </div>
 <?php } ?>
 
-<?php if ($level=='admin' || $level=='apotik' || $level=='gudang'){ ?>
+<?php if ( $level=='gudang'){ ?>
+  <div class="col-md-4">
+    <a href="users?menu=obat_masuk">
+      <div class="box bg-green">
+        <div class="bg-icon"><i class="fa fa-download"></i></div>
+        <label>Obat Masuk</label>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="users?menu=obat_keluar">
+      <div class="box bg-red">
+        <div class="bg-icon"><i class="fa fa-upload"></i></div>
+        <label>Obat Keluar</label>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="users?menu=stok">
+      <div class="box bg-white">
+        <div class="bg-icon"><i class="fa fa-tasks"></i></div>
+        <label>Stok Obat</label>
+      </div>
+    </a>
+  </div>
+  <?php } ?>
+<?php if ($level=='admin' || $level=='apotik'){ ?>
   <div class="col-md-4">
     <a href="users?menu=obat_masuk">
       <div class="box bg-green">

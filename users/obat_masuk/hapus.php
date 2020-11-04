@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['level']!='gudang'){ echo "<script>window.location='users?menu=404';</script>";}
+if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik'){ echo "<script>window.location='users?menu=404';</script>";}
 
 if ($_GET['menu']=='obat_masuk' && $_GET['aksi']=='hapus' && $_GET['id']!=''){
   $id = htmlentities(strip_tags($_GET['id']));
