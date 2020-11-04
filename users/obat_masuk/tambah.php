@@ -1,4 +1,4 @@
-<?php if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik'){ echo "<script>window.location='users?menu=404';</script>";} ?>
+<?php if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['level']!='gudang'){ echo "<script>window.location='users?menu=404';</script>";} ?>
 <!-- <div class="col-md-2"></div> -->
 <div class="col-md-12">
   <br>

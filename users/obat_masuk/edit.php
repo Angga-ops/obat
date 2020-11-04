@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik'){ echo "<script>window.location='users?menu=404';</script>";}
+if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['level']!='gudang'){ echo "<script>window.location='users?menu=404';</script>";}
 
 $cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk WHERE id_masuk='$_GET[id]'");
 if (mysqli_num_rows($cek_data)==0) {
