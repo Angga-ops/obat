@@ -29,7 +29,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk ORDER BY id_masuk D
         <td><?php echo $baris['nama_obat']; ?></td>
         <td><?php echo $baris['jenis_obat']; ?></td>
         <td><?php echo $baris['bentuk_obat']; ?></td>
-        <td><?php echo $baris['harga_beli']; ?></td>
+        <td>Rp. <?php echo number_format( $baris['harga_beli']); ?></td>
         <td><?php echo $baris['jumlah_masuk']; ?></td>
         <td><?php echo $baris['tanggal_exp']; ?></td>
         <td class="text-center">

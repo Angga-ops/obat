@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-warning">
   <div class="panel-heading">
     <b><i class="fa fa-clipboard"></i> <?php echo ucwords($_GET['aksi']); ?> Data Diagnosa Penyakit</b>
   </div>

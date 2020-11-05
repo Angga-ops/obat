@@ -35,7 +35,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_transaksi
         <td><?php echo $baris['nama_pasien']; ?></td>
         <td><?php echo $baris['nama_obat']; ?></td>
         <td><?php echo $jml_obat['jumlah_keluar']; ?></td>
-        <td><?php echo $baris['harga_satuan']; ?></td>
+        <td>Rp. <?php echo number_format($baris['harga_satuan']); ?></td>
         <td><?php echo $jml_obat['jumlah_keluar'] * $baris['harga_satuan']; ?></td>
         <td class="text-center">
           <!-- <a href="users?menu=transaksi&aksi=edit&id=<?php echo $baris['id_transaksi']; ?>" class="btn btn-success btn-xs" title="Edit"><i class="fa fa-pencil"></i></a> -->

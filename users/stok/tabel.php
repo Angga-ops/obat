@@ -29,8 +29,8 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
         <td><?php echo $baris['nama_obat']; ?></td>
         <td><?php echo $baris['dosis_obat']; ?></td>
         <td><?php echo $baris['jumlah_obat']; ?></td>
-        <td><?php echo $baris['harga_jual']; ?></td>
-        <td><?php echo $baris['harga_satuan']; ?></td>
+        <td>Rp. <?php echo number_format ($baris['harga_jual']); ?></td>
+        <td>Rp. <?php echo number_format ($baris['harga_satuan']); ?></td>
         <td><?php echo $baris['tanggal_exp']; ?></td>
         <td class="text-center">
           <a href="users?menu=stok&aksi=edit&id=<?php echo $baris['id_stok']; ?>" class="btn btn-success btn-xs" title="Edit"><i class="fa fa-pencil"></i></a>

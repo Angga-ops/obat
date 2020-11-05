@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-warning">
   <div class="panel-heading">
     <b><i class="fa fa-credit-card"></i> Pembayaran Obat</b>
   </div>
