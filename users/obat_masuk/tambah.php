@@ -16,7 +16,12 @@
     <div class="form-group">
       <div class="col-md-6">
         <label>Jenis Obat</label>
-        <input type="text" name="jenis_obat" class="form-control" value="" placeholder="Jenis Obat" title="Jenis Obat" required>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="jenis_obat" name="jenis_obat" value="Bebas" class="custom-control-input" checked>
+          <label class="custom-control-label" for="jenis_obat">Bebas</label>
+          <input type="radio" id="jenis_obat" name="jenis_obat" value="Keras" class="custom-control-input">
+          <label class="custom-control-label" for="jenis_obat">Keras</label>
+        </div>
       </div>
       <div class="col-md-6">
         <label>Bentuk Obat</label>
