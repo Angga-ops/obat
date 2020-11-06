@@ -11,22 +11,25 @@ $cek_masuk = mysqli_query($con, "SELECT * FROM tbl_obat_masuk");
         <label>Nama Obat</label>
         <select class="form-control" name="id_masuk" required>
           <option value="">- PILIH -</option>
-          <?php while ($baris = mysqli_fetch_array($cek_masuk)) { ?>
+          <?php while ($baris = mysqli_fetch_array($cek_masuk)) { 
+            $cek_stok = mysqli_query($con, "SELECT * FROM tbl_stok WHERE id_masuk='".$baris['id_masuk']."'");
+            $a_stok = mysqli_fetch_array($cek_stok);
+            $j_obat = $baris['jumlah_masuk'];
+
+            if ($a_stok['id_masuk']) { } 
+            else { ?>
             <option value="<?php echo $baris['id_masuk']; ?>"><?php echo $baris['nama_obat']; ?></option>
-          <?php } ?>
+            <input type="hidden" name="jumlah_obat" value="<?php echo $j_obat; ?>">
+          <?php } } ?>
         </select>
       </div>
     </div>
-    <div class="form-group">
-      <div class="col-md-6">
-        <label>Dosis Obat</label>
-        <input type="text" name="dosis_obat" class="form-control" value="" placeholder="Dosis Obat" title="Dosis Obat" required>
-      </div>
+    <!-- <div class="form-group">
       <div class="col-md-6">
         <label>Jumlah Obat</label>
         <input type="text" name="jumlah_obat" class="form-control" value="" placeholder="Jumlah Obat" title="Jumlah Obat" required>
       </div>
-    </div>
+    </div> -->
     <div class="form-group">
       <div class="col-md-6">
         <label>Harga Jual</label>
@@ -59,9 +62,9 @@ if (isset($_POST['btnsimpan'])):
   $harga_satuan  = htmlentities(strip_tags($_POST['harga_satuan']));
 
   $simpan = mysqli_query($con, "INSERT INTO tbl_stok
-                          (id_masuk, dosis_obat, jumlah_obat, harga_jual, harga_satuan)
+                          (id_masuk, jumlah_obat, harga_jual, harga_satuan)
                           VALUES
-                          ('$id_masuk', '$dosis_obat', '$jumlah_obat', '$harga_jual', '$harga_satuan')
+                          ('$id_masuk', '$jumlah_obat', '$harga_jual', '$harga_satuan')
                         ");
   if ($simpan) {
     echo "<script>alert('Data berhasil disimpan!'); window.location='users?menu=stok';</script>";

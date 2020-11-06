@@ -12,7 +12,6 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
     <tr>
       <th width="1%">No.</th>
       <th width="20%">Nama Obat</th>
-      <th width="20%">Dosis Obat</th>
       <th width="15%">Jumlah Obat</th>
       <th width="15%">Harga Box</th>
       <th width="19%">Harga Satuan</th>
@@ -27,7 +26,6 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
       <tr>
         <td><?php echo $no++; ?></td>
         <td><?php echo $baris['nama_obat']; ?></td>
-        <td><?php echo $baris['dosis_obat']; ?></td>
         <td><?php echo $baris['jumlah_obat']; ?></td>
         <td>Rp. <?php echo number_format ($baris['harga_jual']); ?></td>
         <td>Rp. <?php echo number_format ($baris['harga_satuan']); ?></td>
