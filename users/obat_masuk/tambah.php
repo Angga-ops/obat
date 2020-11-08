@@ -102,9 +102,9 @@ if (isset($_POST['btnsimpan'])):
 
   //Insert Data Pembayaran Supplier
   $simpan3 = mysqli_query($con, "INSERT INTO tbl_kredit
-                            (id_masuk, jumlah_obat, harga_jual, harga_satuan)
+                            (id_masuk, tanggal_bayar, total)
                             VALUES
-                            ('".$obat_masuk['id_masuk']."', '$jumlah_masuk', '$harga_box', '$harga_satuan')
+                            ('".$obat_masuk['id_masuk']."', NULL, NULL)
                           ");
 
   if ($simpan1) {
