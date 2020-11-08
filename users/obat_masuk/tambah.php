@@ -25,7 +25,14 @@
       </div>
       <div class="col-md-6">
         <label>Bentuk Obat</label>
-        <input type="text" name="bentuk_obat" class="form-control" value="" placeholder="Bentuk Obat" title="Bentuk Obat" required>
+        <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" name="bentuk_obat" value="Pil"  id="bentuk_Obat" checked>
+        <label class="custom-control-label" for="bentuk_obat">Pil</label>
+        <input type="radio" name="bentuk_obat"  value="Kapsul" id="bentuk_obat">
+        <label class="custom-control-label" for="bentuk_obat">Kapsul</label>
+        <input type="radio" name="bentuk_obat" value="Cair"  id="bentuk_obat">
+        <label class="custom-control-label" for="bentuk_obat">Cair</label>
+        </div>
       </div>
     </div>
     <div class="form-group">
@@ -82,10 +89,10 @@ if (isset($_POST['btnsimpan'])):
   //Insert Data Obat Masuk
   $simpan1 = mysqli_query($con, "INSERT INTO tbl_obat_masuk
                           (tanggal_masuk, nama_obat, jenis_obat, bentuk_obat, harga_beli,
-                           jumlah_masuk, tanggal_exp)
+                          jumlah_masuk, tanggal_exp)
                           VALUES
                           ('$tanggal_masuk', '$nama_obat', '$jenis_obat', '$bentuk_obat', '$harga_beli',
-                           '$jumlah_masuk', '$tanggal_exp')
+                          '$jumlah_masuk', '$tanggal_exp')
                         ");
 
   //Mengambil id_masuk dari data terakhir yang diinputkan
@@ -98,13 +105,13 @@ if (isset($_POST['btnsimpan'])):
                             (id_masuk, jumlah_obat, harga_jual, harga_satuan)
                             VALUES
                             ('".$obat_masuk['id_masuk']."', '$jumlah_masuk', '$harga_box', '$harga_satuan')
-                          ");
+                       ");
 
   //Insert Data Pembayaran Supplier
   $simpan3 = mysqli_query($con, "INSERT INTO tbl_kredit
-                            (id_masuk, tanggal_bayar, total)
+                            (id_masuk,tanggal_bayar, total)
                             VALUES
-                            ('".$obat_masuk['id_masuk']."', NULL, NULL)
+                            ('".$obat_masuk['id_masuk']."', null, null)
                           ");
 
   if ($simpan1) {
