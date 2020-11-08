@@ -2,7 +2,7 @@
   <div class="panel panel-danger">
     <div class="panel-heading">
       <br>
-      <img src="img/logo2.png" width="110" alt="">
+      <img src="img/apotek.png" width="110" alt="">
       <br><br>
     </div>
     <div class="panel-body">

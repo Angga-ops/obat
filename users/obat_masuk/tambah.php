@@ -69,10 +69,10 @@ if (isset($_POST['btnsimpan'])):
 
   $simpan = mysqli_query($con, "INSERT INTO tbl_obat_masuk
                           (tanggal_masuk, nama_obat, jenis_obat, bentuk_obat, harga_beli,
-                           jumlah_masuk, tanggal_exp)
+                          jumlah_masuk, tanggal_exp)
                           VALUES
                           ('$tanggal_masuk', '$nama_obat', '$jenis_obat', '$bentuk_obat', '$harga_beli',
-                           '$jumlah_masuk', '$tanggal_exp')
+                          '$jumlah_masuk', '$tanggal_exp')
                         ");
   if ($simpan) {
     echo "<script>alert('Data berhasil disimpan!'); window.location='users?menu=obat_masuk';</script>";

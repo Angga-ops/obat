@@ -1,9 +1,8 @@
 <?php
 if ($_SESSION['level']!='admin' && $_SESSION['level']!='kasir'){ echo "<script>window.location='users?menu=404';</script>";}
 
-$cek_data = mysqli_query($con, "SELECT * FROM tbl_kredit
-  INNER JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_kredit.id_masuk
-  ORDER BY tbl_kedit.id_kredit DESC");
+$cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk
+  ORDER BY id_masuk DESC");
 ?>
 <table id="data_tables" class="table table-bordered table-striped table-hover" width="100%">
   <thead>
@@ -34,10 +33,11 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_kredit
         <td><?php echo $baris['tanggal_exp']; ?></td>
         <td><?php echo $baris['tanggal_masuk']; ?></td>
         <td><?php echo $baris['jumlah_masuk'];?></td>
-        <td><?php echo $baris['harga_beli'];?></td>
-        <td><?php echo $baris['harga_beli'] * $baris['jumlah_masuk'];?></td>
+        <td>Rp.<?php echo number_format ($baris['harga_beli']);?></td>
+        <td>Rp.<?php echo number_format ($baris['harga_beli'] * $baris['jumlah_masuk']);?></td>
         <td class="text-center">
-        <a href="users?menu=pembayara_suppliern&aksi=kredit&id=<?php echo $baris['id_kredit'];?>" class="btn btn-warning">Kredit</a>
+         
+        <a href="users?menu=pembayaran_supplier&aksi=kredit&id=<?php echo $baris['id_kredit'];?>" class="btn btn-warning">Kredit</a>
           <?php if ($bayar==0){ ?>
             <a href="users?menu=pembayaran&aksi=tambah&id=<?php echo $baris['id_transaksi']; ?>" class="btn btn-primary" title="Bayar">Bayar</a>
           <?php }else{
