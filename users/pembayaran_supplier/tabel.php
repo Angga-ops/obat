@@ -1,22 +1,23 @@
 <?php
 if ($_SESSION['level']!='admin' && $_SESSION['level']!='kasir'){ echo "<script>window.location='users?menu=404';</script>";}
 
-$cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk
-  ORDER BY id_masuk DESC");
+$cek_data = mysqli_query($con, "SELECT * FROM tbl_kredit
+INNER JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk = tbl_kredit.id_masuk ORDER BY tbl_kredit.id_kredit DESC");
 ?>
 <table id="data_tables" class="table table-bordered table-striped table-hover" width="100%">
   <thead>
     <tr>
-      <th width="1%">No.</th>
-      <th width="15%">Nama obat</th>
-      <th width="15%">Jenis Obat</th>
-      <th width="15%">Bentuk Obat</th>
-      <th width="15%">Tanggal Expired</th>
-      <th width="15%">Tanggal Masuk</th>
-      <th width="15%">Jumlah Masuk</th>
-      <th width="15%">Harga</th>
-      <th width="15%">Total Harga</th>
-      <th width="15%">Aksi</th>
+      <th width="">No.</th>
+      <th width="">Nama obat</th>
+      <th width="">Jenis Obat</th>
+      <th width="">Tanggal Expired</th>
+      <th width="">Tanggal Masuk</th>
+      <th width="">Tanggal Bayar</th>
+      <th width="">Jumlah Masuk</th>
+      <th width="">Harga</th>
+      <th width="">Total Harga</th>
+      <th width="">Sisa Bayar</th>
+      <th width="">Aksi</th>
 
     </tr>
   </thead>
@@ -29,12 +30,13 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_obat_masuk
         <td><?php echo $no++; ?></td>
         <td><?php echo $baris['nama_obat']; ?></td>
         <td><?php echo $baris['jenis_obat']; ?></td>
-        <td><?php echo $baris['bentuk_obat']; ?></td>
         <td><?php echo $baris['tanggal_exp']; ?></td>
         <td><?php echo $baris['tanggal_masuk']; ?></td>
+        <td><?php echo $baris['tanggal_bayar']; ?></td>
         <td><?php echo $baris['jumlah_masuk'];?></td>
         <td>Rp.<?php echo number_format ($baris['harga_beli']);?></td>
         <td>Rp.<?php echo number_format ($baris['harga_beli'] * $baris['jumlah_masuk']);?></td>
+        <td>Rp.<?php echo number_format ($baris['harga_beli'] * $baris['jumlah_masuk'] - $baris['byr_awal']);?></td>
         <td class="text-center">
          
         <a href="users?menu=pembayaran_supplier&aksi=kredit&id=<?php echo $baris['id_kredit'];?>" class="btn btn-warning">Kredit</a>
