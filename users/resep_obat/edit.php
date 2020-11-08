@@ -10,6 +10,7 @@ if (mysqli_num_rows($cek_data)==0) {
 }
 $cek_pasien = mysqli_query($con, "SELECT * FROM tbl_pasien");
 $cek_dokter = mysqli_query($con, "SELECT * FROM tbl_user WHERE level='dokter'");
+$cek_obat = mysqli_query($con, "SELECT * FROM tbl_obat_masuk WHERE jenis_obat='Keras'");
 ?>
 <div class="col-md-12">
   <br>
@@ -36,22 +37,23 @@ $cek_dokter = mysqli_query($con, "SELECT * FROM tbl_user WHERE level='dokter'");
     </div>
     <div class="form-group">
       <div class="col-md-6">
-        <label>Tanggal Resep</label>
-        <input type="text" name="tanggal_resep" id="tgl_1" class="form-control" value="<?php echo date('d-m-Y',strtotime($baris['tanggal_resep'])); ?>" placeholder="Tanggal Resep" title="Tanggal Resep" required>
+        <label>Nama Obat</label>
+        <select class="form-control" name="id_masuk" required>
+          <option value="">- PILIH -</option>
+          <?php while ($baris2 = mysqli_fetch_array($cek_obat)) { ?>
+            <option value="<?php echo $baris2['id_masuk']; ?>" <?php if($baris2['id_masuk']==$baris['id_masuk']){echo "selected";} ?>><?php echo $baris2['nama_obat']; ?></option>
+          <?php } ?>
+        </select>
       </div>
       <div class="col-md-6">
-        <label>Nama Obat</label>
-        <input type="text" name="nama_obat" class="form-control" value="<?php echo $baris['nama_obat']; ?>" placeholder="Nama Obat" title="Nama Obat" required>
+        <label>Tanggal Resep</label>
+        <input type="text" name="tanggal_resep" id="tgl_1" class="form-control" value="<?php echo date('d-m-Y',strtotime($baris['tanggal_resep'])); ?>" placeholder="Tanggal Resep" title="Tanggal Resep" required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-md-6">
-        <label>Jenis Obat</label>
-        <input type="text" name="jenis_obat" class="form-control" value="<?php echo $baris['jenis_obat']; ?>" placeholder="Jenis Obat" title="Jenis Obat" required>
-      </div>
-      <div class="col-md-6">
         <label>Keterangan</label>
-        <input type="text" name="keterangan" class="form-control" value="<?php echo $baris['keterangan']; ?>" placeholder="Keterangan" title="Keterangan" required>
+        <textarea name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" title="Keterangan" required><?php echo $baris['keterangan']; ?></textarea>
       </div>
     </div>
     <div class="form-group">

@@ -23,6 +23,7 @@ $cek_data1 = mysqli_query($con, "SELECT * FROM tbl_transaksi
   INNER JOIN tbl_stok ON tbl_stok.id_stok=tbl_transaksi.id_stok
   WHERE tbl_transaksi.id_transaksi='$id_transaksi'
   ORDER BY tbl_transaksi.id_transaksi DESC");
+
 $cek_data2 = mysqli_query($con, "SELECT * FROM tbl_obat_keluar WHERE id_transaksi='$id_transaksi' ORDER BY id_keluar DESC");
 
 function get_data($v_data,$cek_data1,$cek_data2,$tgl,$con='',$id='')
@@ -32,67 +33,47 @@ function get_data($v_data,$cek_data1,$cek_data2,$tgl,$con='',$id='')
     <h2 style="margin-bottom:5px;">PEMBAYARAN OBAT</h2>
   </center>
   <br>
-  <table class="table table-bordered table-striped" width="100%">
-    <thead>
-      <tr>
-        <th>Nama Pasien</th>
-        <th>Nama Obat</th>
-        <th>Jumlah Obat</th>
-        <th>Harga Jual</th>
-        <th>Harga Satuan</th>
-      </tr>
-    </thead>
-    <tbody>
 	';
-  $no=1;
-  while ($baris = mysqli_fetch_array($cek_data1)) {
-    $output .= '
-			<tr>
-        <td valign="top">'.$baris["nama_pasien"].'</td>
-        <td valign="top">'.$baris["nama_obat"].'</td>
-        <td valign="top">'.$baris["jumlah_obat"].'</td>
-        <td valign="top">'.$baris["harga_jual"].'</td>
-        <td valign="top">'.$baris["harga_satuan"].'</td>
-			</tr>
-		';
-    $no++;
-	}
 	$output .= '
-    </tbody>
-	</table>
-  <br>
   <table class="table table-bordered table-striped" width="100%">
     <thead>
       <tr>
         <th width="1">No.</th>
         <th>Tanggal</th>
+        <th>Nama Pasien</th>
+        <th>Nama Obat</th>
         <th>Jumlah</th>
         <th>Harga</th>
         <th>Sub Total</th>
       </tr>
     </thead>
     <tbody>';
-    $no=1; $total=0; $sub_total=0;$t_jumlah=0; $t_total=0;
-    while ($baris = mysqli_fetch_array($cek_data2)) {
-      $sub_total=$baris['jumlah_keluar']*$baris['jumlah_harga_jual'];
+    $no=1; $total=0; $t_jumlah=0; $t_total=0;
+    while ($baris = mysqli_fetch_array($cek_data1)) {
+      $query = mysqli_query($con, "SELECT jumlah_keluar FROM tbl_obat_keluar WHERE id_stok='".$baris['id_stok']."'");
+      $obat = mysqli_fetch_array($query);
+      $q_masuk = mysqli_query($con, "SELECT * FROM tbl_stok INNER JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_stok.id_masuk WHERE tbl_stok.id_stok='".$baris['id_stok']."'");
+      $ambil = mysqli_fetch_array($q_masuk);
       $output .= '
       <tr>
         <td>'. $no .'</td>
         <td>'. date('d-m-Y',strtotime($baris['tanggal_keluar'])) .'</td>
-        <td>'. number_format($baris['jumlah_keluar']) .'</td>
-        <td>Rp. '. number_format($baris['jumlah_harga_jual']) .'</td>
-        <td>Rp. '. number_format($sub_total) .'</td>
+        <td>'. $baris['nama_pasien'] .'</td>
+        <td>'. $ambil['nama_obat'] .'</td>
+        <td>'. number_format($obat['jumlah_keluar']) .'</td>
+        <td>Rp. '. number_format($baris['harga_satuan']) .'</td>
+        <td>Rp. '. number_format($obat['jumlah_keluar'] * $baris['harga_satuan']) .'</td>
       </tr>';
-      $t_jumlah +=$baris['jumlah_keluar'];
-      $t_total +=$baris['jumlah_harga_jual'];
-      $total+=$sub_total;
+      $t_jumlah +=$obat['jumlah_keluar'];
+      $t_total +=$baris['harga_satuan'];
+      $total+=$obat['jumlah_keluar'] * $baris['harga_satuan'];
     $no++;
     }
     $output .= '
     </tbody>
     <tfoot>
       <tr>
-        <th colspan="2" class="text-right">TOTAL</th>
+        <th colspan="4" class="text-right">TOTAL</th>
         <th>'.number_format($t_jumlah).'</th>
         <th>Rp. '.number_format($t_total).'</th>
         <th>Rp. '.number_format($total).'</th>

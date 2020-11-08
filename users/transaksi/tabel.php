@@ -26,6 +26,8 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_transaksi
     <?php
     $no=1;
     while ($baris = mysqli_fetch_array($cek_data)) {
+      $q_masuk = mysqli_query($con, "SELECT * FROM tbl_stok INNER JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_stok.id_masuk WHERE tbl_stok.id_stok='".$baris['id_stok']."'");
+      $ambil = mysqli_fetch_array($q_masuk);
       $query = mysqli_query($con, "SELECT jumlah_keluar FROM tbl_obat_keluar WHERE id_stok='".$baris['id_stok']."'");
       $jml_obat = mysqli_fetch_array($query);
       ?>
@@ -33,7 +35,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_transaksi
         <td><?php echo $no++; ?></td>
         <td><?php echo $baris['tanggal_transaksi']; ?></td>
         <td><?php echo $baris['nama_pasien']; ?></td>
-        <td><?php echo $baris['nama_obat']; ?></td>
+        <td><?php echo $ambil['nama_obat']; ?></td>
         <td><?php echo $jml_obat['jumlah_keluar']; ?></td>
         <td>Rp. <?php echo number_format($baris['harga_satuan']); ?></td>
         <td><?php echo $jml_obat['jumlah_keluar'] * $baris['harga_satuan']; ?></td>

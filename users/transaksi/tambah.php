@@ -1,7 +1,7 @@
 <?php if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik'){ echo "<script>window.location='users?menu=404';</script>";} ?>
 <?php
 $cek_pasien = mysqli_query($con, "SELECT * FROM tbl_pasien");
-$cek_resep  = mysqli_query($con, "SELECT * FROM tbl_resep");
+$cek_resep  = mysqli_query($con, "SELECT * FROM tbl_resep JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_resep.id_masuk");
 $cek_stok   = mysqli_query($con, "SELECT * FROM tbl_stok JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_stok.id_masuk");
 ?>
 <!-- <div class="col-md-2"></div> -->
@@ -19,22 +19,22 @@ $cek_stok   = mysqli_query($con, "SELECT * FROM tbl_stok JOIN tbl_obat_masuk ON 
         </select>
       </div>
       <div class="col-md-6">
-        <label>Resep</label>
-        <select class="form-control" name="id_resep" required>
+        <label>Obat</label>
+        <select class="form-control" name="id_stok" required>
           <option value="">- PILIH -</option>
-          <?php while ($baris = mysqli_fetch_array($cek_resep)) { ?>
-            <option value="<?php echo $baris['id_resep']; ?>"><?php echo $baris['nama_obat']; ?></option>
+          <?php while ($baris = mysqli_fetch_array($cek_stok)) { ?>
+            <option value="<?php echo $baris['id_stok']; ?>"><?php echo $baris['nama_obat']; ?></option>
           <?php } ?>
         </select>
       </div>
     </div>
     <div class="form-group">
       <div class="col-md-6">
-        <label>Obat</label>
-        <select class="form-control" name="id_stok" required>
+        <label>Resep</label>
+        <select class="form-control" name="id_resep" required>
           <option value="">- PILIH -</option>
-          <?php while ($baris = mysqli_fetch_array($cek_stok)) { ?>
-            <option value="<?php echo $baris['id_stok']; ?>"><?php echo $baris['nama_obat']; ?> - Dosis <?php echo $baris['dosis_obat']; ?></option>
+          <?php while ($baris = mysqli_fetch_array($cek_resep)) { ?>
+            <option value="<?php echo $baris['id_resep']; ?>"><?php echo $baris['nama_obat']; ?></option>
           <?php } ?>
         </select>
       </div>

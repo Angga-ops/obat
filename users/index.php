@@ -88,6 +88,16 @@ if (mysqli_num_rows($cek_data)==0) {
     <link rel="stylesheet" type="text/css" href="assets/plugin/datetimepicker/jquery.datetimepicker.css"/>
     <script src="assets/plugin/datetimepicker/jquery.datetimepicker.js"></script>
     <script>
+        $('#data_tables').DataTable({
+            "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json",
+                "sEmptyTable": "Tidak ada data"
+            },
+            "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+            "pageLength": 5
+        });
+    </script>
+    <script>
     $('#tgl_1').datetimepicker({
       lang:'en',
       timepicker:false,

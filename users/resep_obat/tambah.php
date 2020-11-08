@@ -2,6 +2,7 @@
 <?php
 $cek_pasien = mysqli_query($con, "SELECT * FROM tbl_pasien");
 $cek_dokter = mysqli_query($con, "SELECT * FROM tbl_user WHERE level='dokter'");
+$cek_obat = mysqli_query($con, "SELECT * FROM tbl_obat_masuk WHERE jenis_obat='Keras'");
 ?>
 <!-- <div class="col-md-2"></div> -->
 <div class="col-md-12">
@@ -29,22 +30,23 @@ $cek_dokter = mysqli_query($con, "SELECT * FROM tbl_user WHERE level='dokter'");
     </div>
     <div class="form-group">
       <div class="col-md-6">
-        <label>Tanggal Resep</label>
-        <input type="text" name="tanggal_resep" id="tgl_1" class="form-control" value="" placeholder="Tanggal Resep" title="Tanggal Resep" required>
+        <label>Nama Obat</label>
+        <select class="form-control" name="id_masuk" required>
+          <option value="">- PILIH -</option>
+          <?php while ($baris = mysqli_fetch_array($cek_obat)) { ?>
+            <option value="<?php echo $baris['id_masuk']; ?>"><?php echo $baris['nama_obat']; ?></option>
+          <?php } ?>
+        </select>
       </div>
       <div class="col-md-6">
-        <label>Nama Obat</label>
-        <input type="text" name="nama_obat" class="form-control" value="" placeholder="Nama Obat" title="Nama Obat" required>
+        <label>Tanggal Resep</label>
+        <input type="text" name="tanggal_resep" id="tgl_1" class="form-control" value="" placeholder="Tanggal Resep" title="Tanggal Resep" required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-md-6">
-        <label>Jenis Obat</label>
-        <input type="text" name="jenis_obat" class="form-control" value="" placeholder="Jenis Obat" title="Jenis Obat" required>
-      </div>
-      <div class="col-md-6">
         <label>Keterangan</label>
-        <input type="text" name="keterangan" class="form-control" value="" placeholder="Keterangan" title="Keterangan" required>
+        <textarea name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" title="Keterangan" required></textarea>
       </div>
     </div>
     <div class="form-group">
@@ -65,15 +67,14 @@ if (isset($_POST['btnsimpan'])):
   $id_pasien      = htmlentities(strip_tags($_POST['id_pasien']));
   $id_dokter      = htmlentities(strip_tags($_POST['id_dokter']));
   $tanggal_resep  = date('Y-m-d',strtotime(htmlentities(strip_tags($_POST['tanggal_resep']))));
-  $nama_obat      = htmlentities(strip_tags($_POST['nama_obat']));
-  $jenis_obat     = htmlentities(strip_tags($_POST['jenis_obat']));
+  $id_masuk       = htmlentities(strip_tags($_POST['id_masuk']));
   $keterangan     = htmlentities(strip_tags($_POST['keterangan']));
 
   $simpan = mysqli_query($con, "INSERT INTO tbl_resep
-                          (id_pasien, id_dokter, tanggal_resep, nama_obat, jenis_obat,
+                          (id_pasien, id_dokter, tanggal_resep, id_masuk,
                            keterangan)
                           VALUES
-                          ('$id_pasien', '$id_dokter', '$tanggal_resep', '$nama_obat', '$jenis_obat',
+                          ('$id_pasien', '$id_dokter', '$tanggal_resep', '$id_masuk',
                            '$keterangan')
                         ");
   if ($simpan) {

@@ -3,7 +3,8 @@ if ($_SESSION['level']!='admin' && $_SESSION['level']!='dokter'){ echo "<script>
 
 $cek_data = mysqli_query($con, "SELECT * FROM tbl_resep
   INNER JOIN tbl_pasien ON tbl_pasien.id_pasien=tbl_resep.id_pasien
-  INNER JOIN tbl_user ON tbl_user.id_user=tbl_resep.id_dokter ORDER BY tbl_resep.id_resep DESC");
+  INNER JOIN tbl_user ON tbl_user.id_user=tbl_resep.id_dokter
+  INNER JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_resep.id_masuk ORDER BY tbl_resep.id_resep DESC");
 ?>
 <a href="users?menu=resep_obat&aksi=tambah" class="btn btn-primary">+ Data</a>
 <hr>
@@ -15,7 +16,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_resep
       <th width="20%">Dokter</th>
       <th width="15%">Tanggal Resep</th>
       <th width="15%">Nama Obat</th>
-      <th width="15%">Jenis Obat</th>
+      <th width="15%">Keterangan</th>
       <th width="10%">Aksi</th>
     </tr>
   </thead>
@@ -29,7 +30,7 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_resep
         <td><?php echo $baris['nama_lengkap']; ?></td>
         <td><?php echo date('d-m-Y',strtotime($baris['tanggal_resep'])); ?></td>
         <td><?php echo $baris['nama_obat']; ?></td>
-        <td><?php echo $baris['jenis_obat']; ?></td>
+        <td><?php echo $baris['keterangan']; ?></td>
         <td class="text-center">
           <a href="users?menu=resep_obat&aksi=edit&id=<?php echo $baris['id_resep']; ?>" class="btn btn-success btn-xs" title="Edit"><i class="fa fa-pencil"></i></a>
           <a href="users?menu=resep_obat&aksi=hapus&id=<?php echo $baris['id_resep']; ?>" class="btn btn-danger btn-xs" title="Hapus" onclick="return confirm('Anda Yakin?');"><i class="fa fa-trash"></i></a>
