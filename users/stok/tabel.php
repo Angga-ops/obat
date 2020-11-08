@@ -5,8 +5,8 @@ if ($_SESSION['level']!='admin' && $_SESSION['level']!='apotik' && $_SESSION['le
 $cek_data = mysqli_query($con, "SELECT * FROM tbl_stok
   INNER JOIN tbl_obat_masuk ON tbl_obat_masuk.id_masuk=tbl_stok.id_masuk ORDER BY tbl_stok.id_stok DESC");
 ?>
-<a href="users?menu=stok&aksi=tambah" class="btn btn-primary">+ Data</a>
-<hr>
+<!-- <a href="users?menu=stok&aksi=tambah" class="btn btn-primary">+ Data</a>
+<hr> -->
 <table id="data_tables" class="table table-bordered table-striped table-hover" width="100%">
   <thead>
     <tr>

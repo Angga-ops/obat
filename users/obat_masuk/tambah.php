@@ -40,6 +40,16 @@
     </div>
     <div class="form-group">
       <div class="col-md-6">
+        <label>Harga Box</label>
+        <input type="number" name="harga_box" class="form-control" value="" placeholder="Harga Box" title="Harga Box" required>
+      </div>
+      <div class="col-md-6">
+        <label>Harga Satuan</label>
+        <input type="number" name="harga_satuan" class="form-control" value="" placeholder="Harga Satuan" title="Harga Satuan" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-6">
         <label>Tanggal Expaired</label>
         <input type="text" name="tanggal_exp" id="tgl_2" class="form-control" value="" placeholder="Tanggal Expired" title="Tanggal Expired" required>
       </div>
@@ -65,16 +75,39 @@ if (isset($_POST['btnsimpan'])):
   $bentuk_obat    = htmlentities(strip_tags($_POST['bentuk_obat']));
   $harga_beli     = htmlentities(strip_tags($_POST['harga_beli']));
   $jumlah_masuk   = htmlentities(strip_tags($_POST['jumlah_masuk']));
+  $harga_box    = htmlentities(strip_tags($_POST['harga_box']));
+  $harga_satuan  = htmlentities(strip_tags($_POST['harga_satuan']));
   $tanggal_exp    = date('Y-m-d',strtotime(htmlentities(strip_tags($_POST['tanggal_exp']))));
 
-  $simpan = mysqli_query($con, "INSERT INTO tbl_obat_masuk
+  //Insert Data Obat Masuk
+  $simpan1 = mysqli_query($con, "INSERT INTO tbl_obat_masuk
                           (tanggal_masuk, nama_obat, jenis_obat, bentuk_obat, harga_beli,
                            jumlah_masuk, tanggal_exp)
                           VALUES
                           ('$tanggal_masuk', '$nama_obat', '$jenis_obat', '$bentuk_obat', '$harga_beli',
                            '$jumlah_masuk', '$tanggal_exp')
                         ");
-  if ($simpan) {
+
+  //Mengambil id_masuk dari data terakhir yang diinputkan
+  //Deklarasi query untuk menampilkan data terakhir dari obat masuk
+  $query = mysqli_query($con, "SELECT * FROM tbl_obat_masuk ORDER BY id_masuk DESC LIMIT 1");
+  $obat_masuk = mysqli_fetch_array($query);
+  
+  //Insert Data Stok Obat
+  $simpan2 = mysqli_query($con, "INSERT INTO tbl_stok
+                            (id_masuk, jumlah_obat, harga_jual, harga_satuan)
+                            VALUES
+                            ('".$obat_masuk['id_masuk']."', '$jumlah_masuk', '$harga_box', '$harga_satuan')
+                          ");
+
+  //Insert Data Pembayaran Supplier
+  $simpan3 = mysqli_query($con, "INSERT INTO tbl_kredit
+                            (id_masuk, jumlah_obat, harga_jual, harga_satuan)
+                            VALUES
+                            ('".$obat_masuk['id_masuk']."', '$jumlah_masuk', '$harga_box', '$harga_satuan')
+                          ");
+
+  if ($simpan1) {
     echo "<script>alert('Data berhasil disimpan!'); window.location='users?menu=obat_masuk';</script>";
     exit;
   }else {
