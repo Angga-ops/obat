@@ -68,10 +68,14 @@ $level=$_SESSION['level'];
       </li> -->
     <?php endif; ?>
     <?php if ($level=='admin' || $level=='kasir'): ?>
-      <li<?php if($menu=='pembayaran'){echo ' class="asubmenu_active"';}?>>
+      <li<?php if($menu=='pembayaran'){echo ' class="submenu_active"';}?>>
         <a href="users?menu=pembayaran"><i class="fa fa-credit-card"></i> Pembayaran </a>
       </li>
+      <li<?php if($menu=='pembayaran_supplier'){echo ' class="submenu_active"';}?>>
+        <a href="users?menu=pembayaran_supplier"><i class="fa fa-credit-card"></i> Pembayaran Supplier </a>
+      </li>
     <?php endif; ?>
+    
 
     <?php if ($level=='admin'): ?>
       <li id="dropdown">

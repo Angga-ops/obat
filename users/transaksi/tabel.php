@@ -38,8 +38,8 @@ $cek_data = mysqli_query($con, "SELECT * FROM tbl_transaksi
         <td>Rp. <?php echo number_format($baris['harga_satuan']); ?></td>
         <td><?php echo $jml_obat['jumlah_keluar'] * $baris['harga_satuan']; ?></td>
         <td class="text-center">
-          <!-- <a href="users?menu=transaksi&aksi=edit&id=<?php echo $baris['id_transaksi']; ?>" class="btn btn-success btn-xs" title="Edit"><i class="fa fa-pencil"></i></a> -->
-          <a href="users?menu=transaksi&aksi=hapus&id=<?php echo $baris['id_transaksi']; ?>" class="btn btn-danger btn-xs" title="Hapus" onclick="return confirm('Anda Yakin?');"><i class="fa fa-trash"></i></a>
+          <a href="users?menu=transaksi&aksi=edit&id=<?php echo $baris['id_transaksi']; ?>" class="btn btn-success " title="Edit"><i class="fa fa-pencil">Edit</i></a> |
+          <a href="users?menu=transaksi&aksi=hapus&id=<?php echo $baris['id_transaksi']; ?>" class="btn btn-danger " title="Hapus" onclick="return confirm('Anda Yakin?');"><i class="fa fa-trash">Hapus</i></a>
         </td>
       </tr>
     <?php

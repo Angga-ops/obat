@@ -19,10 +19,6 @@ $cek_masuk = mysqli_query($con, "SELECT * FROM tbl_obat_masuk");
     </div>
     <div class="form-group">
       <div class="col-md-6">
-        <label>Dosis Obat</label>
-        <input type="text" name="dosis_obat" class="form-control" value="" placeholder="Dosis Obat" title="Dosis Obat" required>
-      </div>
-      <div class="col-md-6">
         <label>Jumlah Obat</label>
         <input type="text" name="jumlah_obat" class="form-control" value="" placeholder="Jumlah Obat" title="Jumlah Obat" required>
       </div>
@@ -53,15 +49,14 @@ $cek_masuk = mysqli_query($con, "SELECT * FROM tbl_obat_masuk");
 <?php
 if (isset($_POST['btnsimpan'])):
   $id_masuk      = htmlentities(strip_tags($_POST['id_masuk']));
-  $dosis_obat    = htmlentities(strip_tags($_POST['dosis_obat']));
   $jumlah_obat   = htmlentities(strip_tags($_POST['jumlah_obat']));
   $harga_jual    = htmlentities(strip_tags($_POST['harga_jual']));
   $harga_satuan  = htmlentities(strip_tags($_POST['harga_satuan']));
 
   $simpan = mysqli_query($con, "INSERT INTO tbl_stok
-                          (id_masuk, dosis_obat, jumlah_obat, harga_jual, harga_satuan)
+                          (id_masuk, jumlah_obat, harga_jual, harga_satuan)
                           VALUES
-                          ('$id_masuk', '$dosis_obat', '$jumlah_obat', '$harga_jual', '$harga_satuan')
+                          ('$id_masuk', '$jumlah_obat', '$harga_jual', '$harga_satuan')
                         ");
   if ($simpan) {
     echo "<script>alert('Data berhasil disimpan!'); window.location='users?menu=stok';</script>";

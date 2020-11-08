@@ -35,6 +35,10 @@ if(isset($_GET['menu'])){
     include "$menu/index.php";
   }
   else
+  if($menu == "pembayaran_supplier"){
+    include "$menu/index.php";
+  }
+  else
   if($menu == "laporan"){
     include "$menu/index.php";
   }
